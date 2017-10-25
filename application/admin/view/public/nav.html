@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="javascript:void(0);">
-            {{if $project}}当前项目:{{$project.title}}{{else}}API接口文档管理系统{{/if}}
+            {{if $project}}当前项目:{{$project.title}}{{else}}{{get_config('name')}}{{/if}}
         </a>
     </div>
     <!-- /.navbar-header -->

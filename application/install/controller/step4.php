@@ -41,8 +41,9 @@ class step4 extends auth {
 
         $data['email']    = $admin['email'];
         $data['name']     = $admin['name'];
+        $data['status']   = 1;
         $data['type']     = 2;
-        $data['method']   = get_visit_source();
+        $data['device']   = get_visit_source();
         $data['password'] = md5(encrypt($admin['password']));
         $data['ip']       = request::getClientIp();
         $data['address']  = get_ip_address();
