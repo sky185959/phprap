@@ -19,7 +19,7 @@ class db extends contract
     private function __construct()
     {
 
-        $config = config::get('db');
+        $config = config::get(RUNTIME_PATH.'/config/db.php');
 
         $this->driver = $config['driver'];
 

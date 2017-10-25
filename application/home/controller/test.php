@@ -21,13 +21,32 @@ class test {
      */
     public function index(){
 
-        $a = \app\config::get_project_config('request_method');
+        $server = 'localhost';
+        $username = 'username';
+        $password = 'password';
+
+        $conn=mysql_connect($server,$username,$password) or die("error connecting") ; //连接数据库
+
+
+
+
 
         dump($a);
 
 
+    }
 
+    public function pdo_ping($dbconn){
+        try{
+            $dbconn->getAttribute(\PDO::ATTR_SERVER_INFO);
+        } catch (\PDOException $e) {
 
+            dump($e);
+            if(strpos($e->getMessage(), 'MySQL server has gone away')!==false){
+                return false;
+            }
+        }
+        return true;
     }
 
 

@@ -18,6 +18,12 @@ class smarty extends contract
 
         $this->view = new \Smarty();
 
+        if(!is_dir(RUNTIME_PATH)){
+
+            mkdir(RUNTIME_PATH, 0777, true);
+
+        }
+
         $this->view->template_dir    = VIEW_PATH;
         $this->view->cache_dir       = RUNTIME_PATH . '/cache';
         $this->view->compile_dir     = RUNTIME_PATH . '/compile';

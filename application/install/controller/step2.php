@@ -26,11 +26,11 @@ class step2 extends auth {
 
             $config_content = "<?php\r\nreturn\n" . var_export($db,true) . "\r\n?>";
 
-            $config_file    = COMMON_CONFIG . '/db.php';
+            $config_file    = RUNTIME_PATH . '/config/db.php';
 
             if(file_put_contents($config_file, $config_content) === false){
 
-                response::ajax(['code' => 301, 'msg' => '数据库配置文件写入错误，请检查application/common/config/db.php是否有可写权限']);
+                response::ajax(['code' => 301, 'msg' => '数据库配置文件写入错误，请检查runtime/config/db.php是否有可写权限']);
 
             }
 
