@@ -1,0 +1,128 @@
+{{include_file name='public/header' title='系统设置'}}
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    {{include_file name='public/nav' sidebar='sidebar'}}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">系统设置</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form role="form" id="js_settingForm" action="{{url('admin/setting')}}" method="post">
+                                    <div class="form-group">
+                                        <label>网站名称</label>
+                                        <input class="form-control" name="config[name]" value="{{$config['name']}}" placeholder="必填，至少2位" datatype="*2-250" nullmsg="请输入网站名称！">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>网站关键字</label>
+                                        <input class="form-control" name="config[keywords]" value="{{$config['keywords']}}" placeholder="" ignore="ignore" datatype="*">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>版权信息</label>
+                                        <textarea class="form-control" name="config[copyright]" rows="2" ignore="ignore" datatype="*" nullmsg="请输入版权信息！">{{$config['copyright']}}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>系统邮箱</label>
+                                        <input class="form-control" name="config[email]" value="{{$config['email']}}" placeholder="必填" datatype="e" nullmsg="请输入系统邮箱！" errormsg="请输入合法邮箱">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>重置默认密码</label>
+                                        <input class="form-control" name="config[default_password]" value="{{$config['default_password']}}" placeholder="必填，6-20个英文字母、数字或下划线组成的字符" value="123456" datatype="*6-20" nullmsg="请输入重置默认密码！" errormsg="至少6位">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">是否关闭:</label>
+                                        <div class="form-group">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="config[is_close]" {{if $config['is_close'] == 0}}checked{{/if}} value=0> 否
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="config[is_close]" {{if $config['is_close'] == 1}}checked{{/if}} value=1 > 是
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group js_closeMsg hidden">
+                                        <label>关闭时信息</label>
+                                        <textarea class="form-control" name="config[close_msg]" rows="2" datatype="*2-250" ignore="ignore" nullmsg="请输入关闭时提示信息！" errormsg="至少2位">{{$config['close_msg']}}</textarea>
+                                    </div>
+
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                    <button type="button" class="btn btn-primary js_submit">提交</button>
+
+                                </form>
+
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <hr>
+    <p class="text-center">{{get_config('copyright')}}</p>
+    <!-- /#wrapper -->
+    <script>
+
+        //展示关闭提示信息
+        var closeMsgShow = function(){
+            var isClose = $("input[name='config[is_close]']:checked").val();
+
+            if(isClose == 1){
+
+                $(".js_closeMsg").removeClass("hidden");
+                $(".js_closeMsg textarea").attr("ignore",'');
+
+            }else{
+
+                $(".js_closeMsg").addClass("hidden");
+                $(".js_closeMsg textarea").attr("ignore",'ignore');
+
+            }
+        }
+
+        closeMsgShow();
+
+        // 选择关闭网站时
+        $("input[name='config[is_close]']").click(function(){
+            closeMsgShow();
+        });
+
+        $(function(){
+            //表单合法性验证
+            $("#js_settingForm").validateForm();
+
+        });
+    </script>
+
+
+    {{include_file name='public/footer'}}

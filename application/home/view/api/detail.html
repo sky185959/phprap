@@ -1,0 +1,280 @@
+{{include_file name='public/header' title='接口详情'}}
+<link href="{{STATIC_URL}}/plugins/jsonFormat/css.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    {{include_file name='public/nav' sidebar='project_sidebar'}}
+    <div id="page-wrapper">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h1>接口管理 </h1>
+                    <div class="opt-btn">
+
+                        {{if \app\member::has_rule({{$project.id}}, 'api', 'update')}}
+                        <a href="javascript:void(0);" class="btn btn-sm btn-success js_editApiBtn" data-id="{{$api.id}}"><i class="fa fa-fw fa-edit"></i>编辑</a>
+                        {{/if}}
+
+                        {{if \app\member::has_rule({{$project.id}}, 'api', 'delete')}}
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger js_deleteApiBtn" data-id="{{$api.id}}"><i class="fa fa-fw fa-times"></i>删除</a>
+                        {{/if}}
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        接口详情
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-muted"><label>接口名称：</label>{{$api.title}}</p>
+                        <p class="text-muted"><label>所属模块：</label>{{$api.module.title}}</p>
+                        <p class="text-muted"><label>请求类型：</label>{{\app\api::get_method_list($api.method)}}</p>
+                        <p class="text-muted"><label>接口描述：</label>{{$api.intro}}</p>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        接口地址
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+
+                                <tbody>
+                                {{foreach $envs as $env}}
+                                {{$env_url = {{$env.domain}}|cat:'/'|cat:{{$api.uri}}}}
+                                <tr>
+                                    <td style="width: 20%;">{{$env.title}}({{$env.name}})</td>
+                                    <td style="width: 70%;"><code>{{$env_url}}</code></td>
+                                    <td style="width: 10%;">
+                                        <button type="button" data-clipboard-text="{{$env_url}}" class="btn btn-xs btn-success js_copyUrl">复制链接</button>
+                                    </td>
+                                </tr>
+                                {{/foreach}}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        请求参数
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr class="success">
+                                    <th>字段别名</th>
+                                    <th>字段含义</th>
+                                    <th>字段类型</th>
+                                    <th>是否必填</th>
+                                    <th>默认值</th>
+                                    <th>备注说明</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{foreach $request_fields as $request_field}}
+                                <tr class="{{$request_field.class}}">
+                                    <td>{{$request_field.delimiter}}{{if $request_field.parent_id}}--{{/if}}{{$request_field.name}}</td>
+                                    <td>{{$request_field.title}}</td>
+                                    <td>{{\app\field::get_type_list({{$request_field.type}})}}</td>
+                                    <td>{{if $request_field.is_required}}是{{else}}否{{/if}}</td>
+                                    <td>{{$request_field.default_value}}</td>
+                                    <td>{{$request_field.intro}}</td>
+                                </tr>
+                                {{/foreach}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        返回参数
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr class="success">
+                                    <th>字段别名</th>
+                                    <th>字段含义</th>
+                                    <th>字段类型</th>
+                                    <th>备注说明</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{foreach $response_fields as $response_field}}
+                                <tr class="{{if $response_field.level == 1}}warning{{/if}}">
+                                    <td style="text-align: left;padding-left: 50px;">{{$response_field.delimiter}}{{if $response_field.parent_id}}└{{/if}}{{$response_field.name}}</td>
+                                    <td>{{$response_field.title}}</td>
+                                    <td>{{\app\field::get_type_list({{$response_field.type}})}}</td>
+                                    <td>{{$response_field.intro}}</td>
+                                </tr>
+
+                                {{/foreach}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        返回示例
+                    </div>
+                    <div class="panel-body">
+                        <div class="hidden" id="RawJson">{{$api.demo}}</div>
+                        <div id="Canvas" class="Canvas"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+    </div>
+    <!-- /#page-wrapper -->
+    <hr>
+    <p class="text-center">{{get_config('copyright')}}</p>
+    <!-- 删除接口模态框 -->
+    <div class="modal fade" id="js_deleteApiModal" tabindex="2" role="dialog">
+        <div class="modal-dialog" role="document">
+            <form id="js_deleteApiForm" role="form" action="{{url('api/delete','','','json')}}" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">确定删除此接口吗？</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-dismissable alert-warning">
+                            <i class="fa fa-fw fa-info-circle"></i>
+                            接口删除后不可恢复，请谨慎操作！
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="id" class="form-control">
+                            <input type="text" name='password' class="form-control" placeholder="重要操作，请输入登录密码" datatype="*" nullmsg="请输入登录密码!" errormsg="请输入正确的登录密码!">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger js_submit">删除</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </form>
+        </div><!-- /.modal-dialog -->
+    </div>
+</div>
+<!-- /#wrapper -->
+<script src="{{STATIC_URL}}/plugins/jsonFormat/js.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}/plugins/clipboard/clipboard.min.js"></script>
+<script>
+    $(function () {
+        //control+s快速编辑
+        document.onkeydown=function()   {
+            if (event.ctrlKey == true && event.keyCode == 69) {//Ctrl+S
+                event.returnvalue = false;
+                $(".js_editApiBtn").trigger('click');
+            }
+
+        };
+
+        //删除接口表单合法性验证
+        $("#js_deleteApiForm").validateForm({
+            success:function () {
+                window.location.href = "{{url("project/{{$project.id}}")}}";
+                //parent.location.reload();
+            },
+        });
+
+        // 删除接口
+        $(document).delegate('.js_deleteApiBtn', 'click',function(){
+            var id = $(this).data('id');
+
+            if(id <= 0){
+                alert('请选择要删除的模块', 1000);
+            }
+
+            $('#js_deleteApiModal input[name=id]').val(id);
+
+            $('#js_deleteApiModal').modal('show');
+        });
+
+        // 修改接口
+        $(document).delegate('.js_editApiBtn', 'click',function(){
+            var id = $(this).data('id');
+            $('#page-wrapper').load("{{url('api/edit')}}", {'id':id});
+        });
+
+        // 复制链接
+        var clipboard = new Clipboard('.js_copyUrl');
+        clipboard.on('success', function(e) {
+            alert('地址复制成功', 1000);
+            e.clearSelection();
+        });
+        clipboard.on('error', function() {
+            alert('地址复制失败，请手动复制', 3000);
+        });
+
+        // 格式化json
+        Process();
+
+    })
+</script>
+{{include_file name='public/footer'}}
