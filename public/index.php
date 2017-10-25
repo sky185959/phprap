@@ -1,5 +1,4 @@
 <?php
-
 // 定义根目录
 define('ROOT_PATH', __DIR__ . '/..');
 
