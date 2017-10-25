@@ -11,7 +11,7 @@
  Target Server Version : 50634
  File Encoding         : utf-8
 
- Date: 10/25/2017 22:16:35 PM
+ Date: 10/25/2017 23:29:22 PM
 */
 
 SET NAMES utf8mb4;
@@ -23,17 +23,18 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `doc_api`;
 CREATE TABLE `doc_api` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `module_id` int(10) NOT NULL COMMENT '模块id',
-  `title` varchar(250) NOT NULL,
-  `method` int(3) DEFAULT '3' COMMENT '请求方法，1:get 2:post 3:get/post',
-  `uri` varchar(250) DEFAULT '',
-  `intro` varchar(250) NOT NULL DEFAULT '简介',
-  `user_id` int(10) NOT NULL DEFAULT '0',
-  `add_time` datetime NOT '添加时间',
-  `demo` text,
+  `module_id` int(10) NOT NULL DEFAULT '0' COMMENT '模块id',
+  `title` varchar(250) NOT NULL DEFAULT '' COMMENT '接口名',
+  `method` int(3) NOT NULL DEFAULT '2' COMMENT '请求方法，1:get 2:post 3:put',
+  `uri` varchar(250) NOT NULL DEFAULT '' COMMENT '接口地址',
+  `intro` varchar(250) NOT NULL DEFAULT '' COMMENT '接口简介',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建者id',
+  `add_time` datetime NOT NULL COMMENT '添加时间',
+  `demo` text COMMENT '演示数据',
   PRIMARY KEY (`id`),
-  KEY `module_id_index` (`module_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='项目接口表';
+  KEY `module_id_index` (`module_id`),
+  KEY `user_id_index` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='项目接口表';
 
 -- ----------------------------
 --  Records of `doc_api`
@@ -48,11 +49,11 @@ COMMIT;
 DROP TABLE IF EXISTS `doc_apply`;
 CREATE TABLE `doc_apply` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `project_id` int(10) NOT NULL,
+  `project_id` int(10) NOT NULL DEFAULT '0' COMMENT '项目id',
   `creater_id` int(10) NOT NULL DEFAULT '0' COMMENT '项目创建者id',
-  `user_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '申请用户id',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '审核状态',
-  `add_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `add_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '申请时间',
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`),
   KEY `user_id` (`user_id`),
@@ -91,16 +92,16 @@ DROP TABLE IF EXISTS `doc_field`;
 CREATE TABLE `doc_field` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `api_id` int(10) NOT NULL DEFAULT '0' COMMENT '接口id',
-  `user_id` int(10) NOT NULL DEFAULT '0',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建者用户id',
   `parent_id` int(10) NOT NULL DEFAULT '0' COMMENT '父级id',
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `title` varchar(50) NOT NULL DEFAULT '',
-  `type` varchar(10) NOT NULL DEFAULT '1',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '接口名称',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '接口标题',
+  `type` varchar(10) NOT NULL DEFAULT '' COMMENT '字段类型',
   `method` tinyint(3) NOT NULL DEFAULT '1' COMMENT '参数类型，1:请求字段 2:响应字段',
   `is_required` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否必传',
-  `default_value` varchar(250) DEFAULT '',
+  `default_value` varchar(250) DEFAULT '' COMMENT '默认值',
   `intro` varchar(250) NOT NULL DEFAULT '' COMMENT '备注',
-  `add_time` datetime NOT NULL,
+  `add_time` datetime NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `api_id_index` (`api_id`),
   KEY `user_id_index` (`user_id`),
@@ -120,13 +121,13 @@ COMMIT;
 DROP TABLE IF EXISTS `doc_login_log`;
 CREATE TABLE `doc_login_log` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) NOT NULL COMMENT '用户id',
-  `user_name` varchar(50) NOT NULL,
-  `user_email` varchar(50) NOT NULL,
-  `ip` varchar(50) NOT NULL COMMENT '登录ip',
-  `address` varchar(255) NOT NULL COMMENT '登录地址',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `user_name` varchar(50) NOT NULL DEFAULT '' COMMENT '用户名称',
+  `user_email` varchar(50) NOT NULL DEFAULT '' COMMENT '用户邮箱',
+  `ip` varchar(50) NOT NULL DEFAULT '' COMMENT '登录ip',
+  `address` varchar(255) NOT NULL DEFAULT '' COMMENT '登录地址',
   `device` varchar(50) NOT NULL DEFAULT '' COMMENT '登录设备',
-  `add_time` datetime NOT NULL,
+  `add_time` datetime NOT NULL COMMENT '登录时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COMMENT='登录日志表';
 
@@ -143,14 +144,13 @@ COMMIT;
 DROP TABLE IF EXISTS `doc_member`;
 CREATE TABLE `doc_member` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `project_id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  `rules` varchar(10) NOT NULL DEFAULT '1' COMMENT '权限，1：查看 2：编辑 3：删除多个用,链接',
+  `project_id` int(10) NOT NULL DEFAULT '0' COMMENT '项目id',
+  `user_id` int(10) NOT NULL DEFAULT '0' COMMENT '用户id',
   `project_rule` varchar(50) NOT NULL DEFAULT '' COMMENT '项目权限',
   `module_rule` varchar(50) NOT NULL DEFAULT '' COMMENT '权限',
   `api_rule` varchar(50) NOT NULL DEFAULT '' COMMENT '接口权限',
   `member_rule` varchar(50) NOT NULL DEFAULT '' COMMENT '成员权限',
-  `add_time` datetime NOT NULL,
+  `add_time` datetime NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `user_id_index` (`user_id`) USING BTREE,
   KEY `project_id_index` (`project_id`) USING BTREE
@@ -160,7 +160,7 @@ CREATE TABLE `doc_member` (
 --  Records of `doc_member`
 -- ----------------------------
 BEGIN;
-INSERT INTO `doc_member` VALUES ('155', '26', '2', '1', 'look', 'look', 'look', 'look', '2017-10-24 02:44:06'), ('156', '17', '7', '1', 'look', 'look', 'look', 'look', '2017-10-24 12:29:09');
+INSERT INTO `doc_member` VALUES ('155', '26', '2', 'look', 'look', 'look', 'look', '2017-10-24 02:44:06'), ('156', '17', '7', 'look', 'look', 'look', 'look', '2017-10-24 12:29:09');
 COMMIT;
 
 -- ----------------------------
@@ -174,7 +174,7 @@ CREATE TABLE `doc_module` (
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '模块名称',
   `intro` varchar(255) NOT NULL DEFAULT '' COMMENT '项目描述',
   `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
-  `add_time` datetime NOT NULL,
+  `add_time` datetime NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`),
   KEY `project_id_index` (`project_id`),
   KEY `user_id_index` (`user_id`)
@@ -208,13 +208,6 @@ CREATE TABLE `doc_notify` (
 ) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='消息通知表';
 
 -- ----------------------------
---  Records of `doc_notify`
--- ----------------------------
-BEGIN;
-INSERT INTO `doc_notify` VALUES ('54', '3', '123456', '26', '7', '申请加入项目', '勾国磊测试项目', '1', '2017-10-19 19:42:31'), ('55', '7', '勾国磊', '26', '7', '同意您加入项目', '勾国磊测试项目', '1', '2017-10-19 20:02:51'), ('56', '7', '勾国磊', '17', '2', '申请加入项目', '测试项目', '0', '2017-10-24 02:18:02'), ('57', '7', '勾国磊', '17', '2', '申请加入项目', '测试项目', '0', '2017-10-24 02:24:52'), ('58', '7', '勾国磊', '17', '2', '申请加入项目', '测试项目', '0', '2017-10-24 02:29:07');
-COMMIT;
-
--- ----------------------------
 --  Table structure for `doc_project`
 -- ----------------------------
 DROP TABLE IF EXISTS `doc_project`;
@@ -230,13 +223,13 @@ CREATE TABLE `doc_project` (
   `sort` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='项目表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='项目表';
 
 -- ----------------------------
 --  Records of `doc_project`
 -- ----------------------------
 BEGIN;
-INSERT INTO `doc_project` VALUES ('17', '2', '测试项目', '测试专用', '[{\"name\":\"product\",\"title\":\"\\u751f\\u4ea7\\u73af\\u5883\",\"domain\":\"http:\\/\\/www.gocmf.com\"},{\"name\":\"develop\",\"title\":\"\\u5f00\\u53d1\\u73af\\u5883\",\"domain\":\"http:\\/\\/dev.gocmf.com\"}]', '1', '2017-10-21 17:39:03', '2017-10-21 22:17:35', '0'), ('26', '7', '勾国磊测试项目', '勾国磊测试专用项目99', '[{\"name\":\"product\",\"title\":\"\\u751f\\u4ea7\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\"},{\"name\":\"develop\",\"title\":\"\\u5f00\\u53d1\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\"}]', '1', '2017-10-20 21:44:06', '2017-10-24 10:20:05', '0'), ('38', '7', '测试项目', '测试', '[{\"name\":\"product\",\"title\":\"\\u751f\\u4ea7\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\\/project\\/select.html\"},{\"name\":\"develop\",\"title\":\"\\u5f00\\u53d1\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\\/project\\/select.html\"}]', '0', '2017-10-23 20:32:18', '2017-10-24 12:28:20', '0');
+INSERT INTO `doc_project` VALUES ('1', '7', '演示项目', '演示专用项目', '[{\"name\":\"product\",\"title\":\"\\u751f\\u4ea7\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\"},{\"name\":\"develop\",\"title\":\"\\u5f00\\u53d1\\u73af\\u5883\",\"domain\":\"http:\\/\\/gocmf.com\"}]', '1', '2017-10-20 21:44:06', '2017-10-25 23:28:13', '0'), ('2', '2', '测试项目', '测试专用', '[{\"name\":\"product\",\"title\":\"\\u751f\\u4ea7\\u73af\\u5883\",\"domain\":\"http:\\/\\/www.gocmf.com\"},{\"name\":\"develop\",\"title\":\"\\u5f00\\u53d1\\u73af\\u5883\",\"domain\":\"http:\\/\\/dev.gocmf.com\"}]', '1', '2017-10-21 17:39:03', '2017-10-25 23:28:16', '0');
 COMMIT;
 
 -- ----------------------------
@@ -258,13 +251,13 @@ CREATE TABLE `doc_project_log` (
   `field_name` varchar(200) DEFAULT NULL,
   `member_name` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`,`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `doc_project_log`
 -- ----------------------------
 BEGIN;
-INSERT INTO `doc_project_log` VALUES ('107', '17', '7', '勾国磊(314418388@qq.com)', '更新', '字段', '将接口<code>获取会员列表</code>的请求字段<code>token</code>名字修改为<code>token123456</code>', '2017-10-24 23:33:25', null, null, null, null, null), ('108', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增请求字段<code>demo(demo)</code>', '2017-10-24 23:50:07', null, null, null, null, null), ('109', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>请求字段<code>demo(demo)</code>', '2017-10-25 00:02:23', null, null, null, null, null), ('110', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>请求字段<code>demo(demo)</code>', '2017-10-25 00:04:00', null, null, null, null, null), ('111', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>请求字段<code>demo(demo)</code>', '2017-10-25 00:05:04', null, null, null, null, null), ('112', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增<code>test(test)</code>', '2017-10-25 00:10:29', null, null, null, null, null), ('113', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增<code>kkkk(kkk)</code>', '2017-10-25 00:11:15', null, null, null, null, null), ('114', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增<code>kkkll(kkk)</code>', '2017-10-25 00:19:09', null, null, null, null, null), ('115', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>请求字段<code>kkk(kkk)</code>', '2017-10-25 00:19:15', null, null, null, null, null), ('116', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增<code>llllllll(lllllll)</code>', '2017-10-25 00:24:41', null, null, null, null, null), ('117', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>响应字段<code>llllllll(lllllll)</code>', '2017-10-25 00:24:47', null, null, null, null, null), ('118', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增<code>lll(ll)</code>', '2017-10-25 00:24:59', null, null, null, null, null), ('119', '17', '2', '勾国印(245629560@qq.com)', '删除', '字段', '删除接口<code>获取会员列表</code>响应字段<code>lll(ll)</code>', '2017-10-25 00:26:11', null, null, null, null, null), ('120', '17', '2', '勾国印(245629560@qq.com)', '添加', '字段', '给接口<code>获取会员列表</code>新增响应字段<code>demo(demo)</code>', '2017-10-25 00:26:23', null, null, null, null, null);
+INSERT INTO `doc_project_log` VALUES ('1', '26', '7', '勾国磊(314418388@qq.com)', '更新', '项目', '将项目名<code>勾国磊测试项目</code>修改为<code>演示项目</code>', '2017-10-25 23:26:44', null, null, null, null, null), ('2', '26', '7', '勾国磊(314418388@qq.com)', '更新', '项目', '将项目描述<code>勾国磊测试专用项目99</code>修改为<code>演示项目</code>', '2017-10-25 23:26:44', null, null, null, null, null), ('3', '26', '7', '勾国磊(314418388@qq.com)', '更新', '项目', '将项目描述<code>演示项目</code>修改为<code>演示专用项目</code>', '2017-10-25 23:26:55', null, null, null, null, null);
 COMMIT;
 
 -- ----------------------------
@@ -273,9 +266,9 @@ COMMIT;
 DROP TABLE IF EXISTS `doc_user`;
 CREATE TABLE `doc_user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `email` varchar(50) NOT NULL COMMENT '登录邮箱',
-  `name` varchar(50) NOT NULL COMMENT '昵称',
-  `password` varchar(50) NOT NULL COMMENT '密码',
+  `email` varchar(50) NOT NULL DEFAULT '' COMMENT '登录邮箱',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '昵称',
+  `password` varchar(50) NOT NULL DEFAULT '' COMMENT '密码',
   `type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '1:用户 2:管理员',
   `status` tinyint(3) NOT NULL DEFAULT '1' COMMENT '状态',
   `ip` varchar(250) NOT NULL DEFAULT '' COMMENT '注册ip',
@@ -290,7 +283,7 @@ CREATE TABLE `doc_user` (
 --  Records of `doc_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `doc_user` VALUES ('2', '245629560@qq.com', '勾国印', '65a81041f28d51287b23dc2aa1cd4c3b', '1', '0', '111.193.200.187', '中国  北京市 北京市', 'pc', '2017-10-08 16:50:27'), ('3', '123456@qq.com', '123456', '0546a67839187d043f5528f98a829089', '1', '1', '61.135.18.162', '中国  北京市 北京市', 'pc', '2017-10-23 17:36:31'), ('7', '314418388@qq.com', '勾国磊', '65a81041f28d51287b23dc2aa1cd4c3b', '2', '1', '111.193.219.169', '中国  北京市 北京市', 'pc', '2017-10-02 13:34:08');
+INSERT INTO `doc_user` VALUES ('2', '245629560@qq.com', '勾国印', '65a81041f28d51287b23dc2aa1cd4c3b', '1', '0', '111.193.200.187', '中国  北京市 北京市', 'pc', '2017-10-08 16:50:27'), ('7', '314418388@qq.com', '勾国磊', '65a81041f28d51287b23dc2aa1cd4c3b', '2', '1', '111.193.219.169', '中国  北京市 北京市', 'pc', '2017-10-02 13:34:08');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

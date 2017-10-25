@@ -15,7 +15,7 @@ if(is_file($autoloadFile = ROOT_PATH . '/vendor/autoload.php')){
 }
 
 // 默认关闭错误报告
-ini_set("display_errors", "On");
+ini_set("display_errors", "Off");
 error_reporting(E_ALL ^ E_NOTICE);
 
 require __DIR__ . '/bootstrap/const.php';
