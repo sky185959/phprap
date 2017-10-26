@@ -83,7 +83,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     
 - 安装程序
 
-    打开浏览器，访问安装向导http://你的域名/install/
+    打开浏览器，访问安装向导`http://你的域名/install`
 
 ## Documentation
 
