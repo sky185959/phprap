@@ -20,7 +20,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
  - CURL 拓展
  - MCRYPT 拓展
  
-## Installation
+## 程序安装
 
 - 下载程序
 
@@ -81,15 +81,13 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ```  
     >SUB_DIR换成自己的目录
     
-- 打开浏览器,访问安装向导`http://你的域名/install`
-
+### 打开浏览器,访问安装向导`http://你的域名/install`
 
     1. 安装步骤一：环境检测
     2. 安装步骤二：数据库配置
     3. 安装步骤三：管理员配置
     4. 安装步骤三：安装完成
     
-
 ## Documentation
 
 - [核心类库](https://github.com/gouguoyin/doc/blob/master/gophp/library.md)
