@@ -15,7 +15,7 @@
                 <span class="alert-link">{{$notify.message}}</span>
                 <span class="text-muted small">{{pass_time($notify.add_time)}}</span>
                 <span class="pull-right text-muted small">
-                    <a class="js_closeNotify" title="关闭通知" href="javascript:void(0);" data-id="{{$notify.id}}">
+                    <a class="js_cleanSingleNotify" title="关闭通知" href="javascript:void(0);" data-id="{{$notify.id}}">
                         <span class="fa fa-eye-slash fa-fw"></span>
                     </a>
                 </span>
@@ -29,7 +29,7 @@
             <div class="text-center">
 
                 <a href="{{url('apply')}}" style="padding: 0"><button type="button" class="btn btn-xs btn-success">查看全部</button></a>
-                <a href="javascript:void(0);" style="padding: 0"><button type="button" class="btn btn-xs btn-warning js_cleanNotify">清空全部</button></a>
+                <a href="javascript:void(0);" style="padding: 0"><button type="button" class="btn btn-xs btn-warning js_cleanAllNotify">清空全部</button></a>
             </div>
         </li>
     </ul>

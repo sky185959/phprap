@@ -77,12 +77,12 @@
         });
 
         // 关闭单条消息
-        $(document).delegate('.js_closeNotify', 'click',function(event){
+        $(document).delegate('.js_cleanSingleNotify', 'click',function(event){
             event.stopPropagation();
 
             var thisObj = $(this);
 
-            var id = $(this).data('id');
+            var id  = thisObj.data('id');
 
             var url = "{{url('notify/delete')}}";
 
@@ -90,10 +90,14 @@
 
                 if(json.code == 200){
 
-                    thisObj.closest('li').remove();
+                    alert(json.msg, 1000, function(){
 
-                    var url = "{{url('notify/load')}}";
-                    $('.js_notifyDropdown').load(url);
+                        thisObj.closest('li').remove();
+
+                        var url = "{{url('notify/load')}}";
+                        $('.js_notifyDropdown').load(url);
+
+                    });
 
                 }else{
 
@@ -106,10 +110,37 @@
         });
 
         // 清空全部消息
-        $(document).delegate('.js_cleanNotify', 'click',function(){
+        $(document).delegate('.js_cleanAllNotify', 'click',function(){
             confirm('确定要清空所有的提醒消息?', function(){
+                var ids = '';
+                $(".js_cleanSingleNotify").each(function () {
 
-                alert('提醒消息清理成功', 500);
+                    ids += $(this).data('id') + ',';
+
+                });
+
+                var url = "{{url('notify/delete')}}";
+
+                $.post(url, { id:ids }, function(json){
+
+                    if(json.code == 200){
+
+                        alert(json.msg, 1000, function(){
+
+                            var url = "{{url('notify/load')}}";
+                            $('.js_notifyDropdown').load(url);
+
+                        });
+
+                    }else{
+
+                        alert(json.msg, 3000);
+
+                    }
+
+                }, 'json');
+
+                //alert('提醒消息清理成功', 500);
 
             });
 
@@ -121,7 +152,7 @@
         // ajax消息通知
         setInterval(function(){
             var url = "{{url('notify/load')}}";
-            $('.js_notifyDropdown').load(url);
+//            $('.js_notifyDropdown').load(url);
 
         }, 3000);
 

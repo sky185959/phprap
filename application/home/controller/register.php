@@ -37,7 +37,7 @@ class register extends controller {
             $data['email']    = $email;
             $data['name']     = $name;
             $data['type']     = 1;
-            $data['method']   = get_visit_source();
+            $data['device']   = get_visit_source();
             $data['password'] = md5(encrypt($password));
             $data['ip']       = request::getClientIp();
             $data['address']  = get_ip_address();

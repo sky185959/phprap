@@ -21,27 +21,30 @@ class notify extends auth {
      */
     public function delete(){
 
-        $id = request::post('id', 0);
+        $id  = request::post('id', '');
 
-        $notify = _uri('notify', $id);
+        $ids = array_filter(explode(',', $id));
 
-        if(!$notify){
+        foreach ($ids as $id) {
+            $notify = _uri('notify', $id);
 
-            response::ajax(['code' => 301, 'msg' => '该消息不存在!']);
+            if(!$notify){
+
+                response::ajax(['code' => 301, 'msg' => '该消息不存在!']);
+
+            }
+
+            $result = db('notify')->show(false)->where('id', '=', $id)->update(['is_readed' => 1]);
+
+            if($result === false){
+
+                response::ajax(['code' => 403, 'msg' => '消息清空失败!']);
+
+            }
 
         }
 
-        $result = db('notify')->show(false)->where('id', '=', $id)->update(['is_readed' => 1]);
-
-        if($result !== false){
-
-            response::ajax(['code' => 200, 'msg' => '消息删除成功!']);
-
-        }else{
-
-            response::ajax(['code' => 403, 'msg' => '消息删除失败!']);
-
-        }
+        response::ajax(['code' => 200, 'msg' => '消息清空成功!']);
 
     }
 
