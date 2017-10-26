@@ -83,6 +83,9 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     
 - 安装程序
 
+    1. 直接访问由作者维护的[rapapi.org](http://rapapi.org)
+    2. 自己部署一个RAP服务器，参考最新Release部分
+
 
     1. 打开浏览器，访问安装向导`http://你的域名/install`
     2. 安装步骤一：环境检测
