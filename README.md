@@ -1,10 +1,10 @@
 
-<h3 align="center">APIDOC接口文档管理系统，打造PHP版RAP系统</h3>
+<h3 align="center">APIDOC接口文档管理系统，PHP版RAP系统</h3>
 
 ## Feature
 
- - 基于 MVC 体系架构，确保了清晰分离逻辑层和表现层；
- - 基于命名空间和trait、yield、静态类延迟绑定等现代PHP新特性；
+ - 部署简单，按照安装程序步骤操作即可完成安装部署；
+ - 基于bootstrap搭建，完美适配PC和移动端；
  - 遵循PSR-2、PSR-4规范，Composer及单元测试支持；
  - 完美支持PHP7；
  - 友好的IDE智能提示和类方法追踪；
