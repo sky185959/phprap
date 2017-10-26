@@ -12,9 +12,7 @@
     ],
     "homepage": "http://www.gocmf.com/",
     "require": {
-        "smarty/smarty": "~3.1",
-        "phpmailer/phpmailer": "^5.2",
-        "workerman/phpsocket.io" : ">1.0.0"
+        "smarty/smarty": "~3.1"
     },
     "autoload": {
       "psr-4": {
