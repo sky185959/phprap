@@ -22,10 +22,10 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
  
 ## Installation
 
-- 下载框架
+- 下载程序
 
     ```php
-    git clone https://github.com/gouguoyin/GoPHP.git
+    git clone https://github.com/gouguoyin/apidoc.git
     ```
 - 上传到服务器
 
@@ -81,20 +81,9 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ```  
     >SUB_DIR换成自己的目录
     
-- 更改配置信息
+- 打开浏览器，访问安装向导
 
-  application/common/config目录下的配置文件全局有效，模块目录下的config目录下的配置文件仅对该模块有效，如果有相同配置项，那么模块环境目录(如home/config/develop)下的配置文件优先级大于模块配置文件(如home/config)大于公共环境目录(如common/config/develop)下的配置文件大于公共环境目录(如common/config)下的配置文件，如
-  
-    ```php
-    application/home/config/develop/db.php
-    >
-    application/home/config/db.php
-    >
-    application/common/config/develop/db.php
-    >
-    application/common/config/db.php>
-    ``` 
-    >完整配置参数请查看[配置参考](https://github.com/gouguoyin/doc/blob/master/gophp/config.md)
+    http://你的域名/install/
 
 ## Documentation
 
