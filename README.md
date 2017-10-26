@@ -12,13 +12,12 @@
 ## Requirement
 
  - PHP >= 5.5.0
- - COMPOSER
+ - COMPOSER(非必须，但建议安装)
  - PDO 拓展
  - GD 拓展
  - CURL 拓展
+ - MCRYPT 拓展
  
->框架本身没有什么特别模块要求，具体的应用系统运行环境要求视开发所涉及的模块。
-
 ## Installation
 
 - 下载框架
