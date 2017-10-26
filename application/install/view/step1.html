@@ -189,29 +189,43 @@
                                                 </tr>
 
                                                 <tr>
-                                                    <td>application/common/config/db.php</td>
-                                                    <td>{{$chmod['db']}}</td>
+                                                    <td>runtime/comlile</td>
+                                                    <td>{{$chmod['compile']}}</td>
                                                     <td>可读,可写</td>
                                                     <td>
-                                                        {{if is_writable(COMMON_CONFIG|cat:'/db.php')}}
+                                                        {{if is_writable(RUNTIME_PATH|cat:'/compile')}}
                                                         <i class="fa fa-check"></i>
                                                         {{else}}
                                                         <i class="fa fa-times"></i>
-                                                        <input type="hidden" name="step1[db]" value="application/common/config/db.php文件必须可读可写" >
+                                                        <input type="hidden" name="step1[db]" value="runtime/comlile目录必须可读可写" >
                                                         {{/if}}
                                                     </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td>application/install</td>
-                                                    <td>{{$chmod['install']}}</td>
+                                                    <td>runtime/config</td>
+                                                    <td>{{$chmod['config']}}</td>
                                                     <td>可读,可写</td>
                                                     <td>
-                                                        {{if is_writable(APP_PATH|cat:'/install/')}}
+                                                        {{if is_writable(RUNTIME_PATH|cat:'/config')}}
                                                         <i class="fa fa-check"></i>
                                                         {{else}}
                                                         <i class="fa fa-times"></i>
-                                                        <input type="hidden" name="step1[install]" value="application/install目录必须可读可写" >
+                                                        <input type="hidden" name="step1[db]" value="runtime/config目录必须可读可写" >
+                                                        {{/if}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>runtime/log</td>
+                                                    <td>{{$chmod['log']}}</td>
+                                                    <td>可读,可写</td>
+                                                    <td>
+                                                        {{if is_writable(RUNTIME_PATH|cat:'/log/')}}
+                                                        <i class="fa fa-check"></i>
+                                                        {{else}}
+                                                        <i class="fa fa-times"></i>
+                                                        <input type="hidden" name="step1[install]" value="runtime/log目录必须可读可写" >
                                                         {{/if}}
                                                     </td>
                                                 </tr>

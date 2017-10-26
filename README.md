@@ -27,16 +27,18 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ```php
     git clone https://github.com/gouguoyin/GoPHP.git
     ```
-- 绑定域名
+- 上传到服务器
 
-    将域名绑定到`public`目录上(非必须，但是建议)
+    ```php
+    将域名绑定到`public`目录上
+    ```
     
 - 设置目录权限
 
-    `public/upload`、`runtime`目录给予可读可写权限(如果不存在则先创建目录)
+    `runtime`目录及子目录给予可读可写权限
     
     
-- 开启UrlRewrite来隐藏入口文件index.php
+- 开启UrlRewrite隐藏入口文件index.php
 
   [**Apache**]
   
