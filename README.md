@@ -1,5 +1,6 @@
+<h3 align="center"> [PHPRAP - 打造PHP版RAP接口管理系统！](http://apidoc.gouguoyin.cn) </h3>
 
-## [PHPRAP - 打造PHP版RAP接口管理系统！](http://apidoc.gouguoyin.cn) 
+## 特性
 
 PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打造PHP版的RAP。它：
 
