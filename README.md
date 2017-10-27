@@ -2,7 +2,7 @@
 
 ## 特性
 
-PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提高前后端开发协作效率，打造PHP版的RAP。它：
+PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提高前后端协作开发效率，打造PHP版的RAP。它：
 
  - 部署简单，按照安装步骤操作即可完成安装部署；
  - 操作简单，和阿里RAP高度一致的操作流程，给力的用户体验，让你一分钟上手；
@@ -105,9 +105,6 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
 - 登录
 ![](http://gouguoyin.qiniudn.com/login.png)
 
-- 主页
-![](http://gouguoyin.qiniudn.com/home.png)
-
 - 项目
 
     - 新建项目
@@ -120,13 +117,18 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
     ![](http://gouguoyin.qiniudn.com/project_transfer.png)
     
     - 搜索项目
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/project_select.png)
+    
+    - 切换项目
+    ![](http://gouguoyin.qiniudn.com/project_select.png)
     
     - 项目主页
     ![](http://gouguoyin.qiniudn.com/project_home.png)
     
     - 项目成员
     ![](http://gouguoyin.qiniudn.com/project_member.png)
+    
+    - 成员权限
     ![](http://gouguoyin.qiniudn.com/member_rule.png)
     
     - 项目动态
