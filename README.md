@@ -109,17 +109,57 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 ![](http://gouguoyin.qiniudn.com/home.png)
 
 - 项目
+
+    - 项目主页
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+        
     - 新建项目
     ![](http://gouguoyin.qiniudn.com/creat_project.png)
     
     - 编辑项目
     ![](http://gouguoyin.qiniudn.com/step1.png)
     
-    - 编辑项目
+    - 转让项目
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 搜索项目
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 删除项目
     ![](http://gouguoyin.qiniudn.com/step1.png)
     
 - 模块
+    - 新建模块
+    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    
+    - 编辑模块
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 删除项目
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
 - 接口
+
+    - 接口主页
+    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    
+    - 添加接口
+    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    
+    - 编辑接口
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 删除接口
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 添加字段
+    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    
+    - 编辑字段
+    ![](http://gouguoyin.qiniudn.com/step1.png)
+    
+    - 删除字段
+    ![](http://gouguoyin.qiniudn.com/step1.png)
 
 ## 联系
 
