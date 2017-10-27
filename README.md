@@ -141,22 +141,22 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     - 编辑模块
     ![](http://gouguoyin.qiniudn.com/module_edit.png)
     
-    - 删除项目
+    - 删除模块
     ![](http://gouguoyin.qiniudn.com/module_delete.png)
     
 - 接口
 
     - 接口主页
-    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    ![](http://gouguoyin.qiniudn.com/api_home.png)
     
     - 添加接口
-    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    ![](http://gouguoyin.qiniudn.com/api_creat.png)
     
     - 编辑接口
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/api_edit.png)
     
     - 删除接口
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/api_delete.png)
     
     - 添加字段
     ![](http://gouguoyin.qiniudn.com/creat_project.png)
