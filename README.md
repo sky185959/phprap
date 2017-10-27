@@ -33,7 +33,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
     
   [**GITEE**]
     ```php
-    git clone git@gitee.com:gouguoyin/phprap.git
+    git clone https://gitee.com/gouguoyin/phprap.git
     ```
     
   [**源码**]
