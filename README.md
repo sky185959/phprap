@@ -159,13 +159,13 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ![](http://gouguoyin.qiniudn.com/api_delete.png)
     
     - 添加字段
-    ![](http://gouguoyin.qiniudn.com/creat_project.png)
+    ![](http://gouguoyin.qiniudn.com/field_creat.png)
     
     - 编辑字段
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/field_edit.png)
     
     - 删除字段
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/field_delete.png)
 
 ## 联系
 
