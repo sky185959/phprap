@@ -32,9 +32,9 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
     ```
     
   [**源码**]
-    ```php
-    下载[源码](http://gouguoyin.qiniudn.com/phprap-master.zip)，上传服务器上后解压
-    ``` 
+  
+  下载[源码](http://gouguoyin.qiniudn.com/phprap-master.zip)，上传服务器上后解压
+    
 - 绑定域名
 
     ```php
