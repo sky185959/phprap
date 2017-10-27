@@ -85,13 +85,13 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 - 打开浏览器,访问安装向导`http://你的域名/install`
 
     - 安装步骤一：环境检测
-    ![](http://7jpto7.com1.z0.glb.clouddn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/step1.png)
     
     - 安装步骤二：数据库配置
-    ![](http://7jpto7.com1.z0.glb.clouddn.com/step2.png)
+    ![](http://gouguoyin.qiniudn.com/step2.png)
 
     - 安装步骤三：管理员配置
-    ![](http://7jpto7.com1.z0.glb.clouddn.com/step3.png)
+    ![](http://gouguoyin.qiniudn.com/step3.png)
 
     - 安装步骤四：安装完成
     ![](http://gouguoyin.qiniudn.com/step4.png)
@@ -100,10 +100,10 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 ## 使用
 
 - 注册
-![](http://7jpto7.com1.z0.glb.clouddn.com/register.png)
+![](http://gouguoyin.qiniudn.com/register.png)
 
 - 登录
-![](http://7jpto7.com1.z0.glb.clouddn.com/login.png)
+![](http://gouguoyin.qiniudn.com/login.png)
 
 - 主页
 - 项目
