@@ -126,10 +126,10 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ![](http://gouguoyin.qiniudn.com/project_home.png)
     
     - 项目成员
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/project_member.png)
     
     - 项目动态
-    ![](http://gouguoyin.qiniudn.com/step1.png)
+    ![](http://gouguoyin.qiniudn.com/project_history.png)
     
     - 删除项目
     ![](http://gouguoyin.qiniudn.com/step1.png)
