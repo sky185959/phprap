@@ -97,13 +97,12 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     ![](http://7jpto7.com1.z0.glb.clouddn.com/step4.png)
 
     
-## 文档
+## 使用
 
-- [核心类库](https://github.com/gouguoyin/doc/blob/master/gophp/library.md)
-- [系统函数](https://github.com/gouguoyin/doc/blob/master/gophp/function.md)
-- [辅助类库](https://github.com/gouguoyin/doc/blob/master/gophp/helper.md)
-- [系统常量](https://github.com/gouguoyin/doc/blob/master/gophp/const.md)
-- [配置参考](https://github.com/gouguoyin/doc/blob/master/gophp/config.md)
+- 主页
+- 项目
+- 模块
+- 接口
 
 ## 联系
 
