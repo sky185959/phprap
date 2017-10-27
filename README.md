@@ -26,9 +26,15 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
 
 - 下载程序
 
+  [**GITHUB**]
     ```php
     git clone https://github.com/gouguoyin/phprap.git
     ```
+    
+  [**GITHUB**]
+    ```php
+    git clone https://github.com/gouguoyin/phprap.git
+    ``` 
 - 上传到服务器
 
     ```php
