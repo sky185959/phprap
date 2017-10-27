@@ -180,6 +180,21 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
     - 删除字段
     ![](http://gouguoyin.qiniudn.com/field_delete.png)
     
+- 后台
+
+    - 项目管理
+    ![](http://gouguoyin.qiniudn.com/api_creat.png)
+    
+    - 用户管理
+    ![](http://gouguoyin.qiniudn.com/api_edit.png)
+    
+    - 登录历史
+    ![](http://gouguoyin.qiniudn.com/api_home.png)
+    
+    - 系统设置
+    ![](http://gouguoyin.qiniudn.com/api_delete.png)
+
+    
 ## TODO
 
 - 多团队支持，可以创建团队和设置团队成员权限；
