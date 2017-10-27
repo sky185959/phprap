@@ -63,27 +63,15 @@ class user extends auth {
         $project_id = request::get('project_id', 0);
         $name       = request::get('name', '');
 
-        // 获取提交过来已选中的用户id
-        $selected_ids = request::get('user_ids', '');
-
         $member_ids = '';
 
-        if($project_id){
+        // 获取已经是成员的用户id
+        $member_id  = db('member')->where('project_id', '=', $project_id)->column('user_id');
 
-            // 获取已经是成员的用户id
-            $member_id  = db('member')->where('project_id', '=', $project_id)->column('id');
+        $member_id && $member_ids = implode(',', $member_id) . ',';
 
-            $member_id && $member_ids = implode(',', $member_id) . ',';
-
-            // 排除掉已是成员的和自己的id
-            $member_ids = $selected_ids . $member_ids . $this->user_id;
-
-        }else{
-
-            // 排除掉自己的id
-            $member_ids = $selected_ids . $this->user_id;
-
-        }
+        // 排除掉已是成员的和自己的id
+        $member_ids = $member_ids . $this->user_id;
 
         $data = [];
 
