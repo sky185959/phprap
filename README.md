@@ -110,7 +110,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
 ![](http://gouguoyin.qiniudn.com/profile_edit.png)
 
 - 消息通知
-![](http://gouguoyin.qiniudn.com/notify.png)
+![](http://gouguoyin.qiniudn.com/notify1.png)
 
 - 项目
 
