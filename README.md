@@ -1,4 +1,4 @@
-[PHPRAP - 打造PHP版RAP接口管理系统！](http://apidoc.gouguoyin.cn)
+[PHPRAP - 打造PHP版RAP接口管理系统！](http://www.phprap.com)
 
 ## 特性
 
@@ -170,6 +170,6 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 ## 联系
 
 - 如果您在使用过程中有任何疑问，或有好的意见和想法，请通过以下途径联系我
-- 官方网站：[apidoc.gouguoyin.cn](http://apidoc.gouguoyin.cn)
+- 官方网站：[www.phprap.cn](http://www.phprap.com)
 - 作者博客：[www.gouguoyin.cn](http://www.gouguoyin.cn/about.html)
 - 官方QQ群：421537504 <a style="margin-left:10px" target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=d49826b55d1759513ce5d68253b3f0589b227587edf87059aa08125e620b73c0"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="GoPHP官方交流群" title="GoPHP官方交流群"></a>
