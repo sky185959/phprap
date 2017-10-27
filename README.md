@@ -1,4 +1,4 @@
-<h3 align="center"> [PHPRAP - 打造PHP版RAP接口管理系统！](http://apidoc.gouguoyin.cn) </h3>
+[PHPRAP - 打造PHP版RAP接口管理系统！](http://apidoc.gouguoyin.cn)
 
 ## 特性
 
@@ -13,7 +13,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
  - 完善的权限控制系统，可以分别控制项目、模块、接口和成员的操作权限；
  - 支持项目接口一键导出，方便离线查看；
 
-## 环境依赖
+## 依赖
 
  - PHP >= 5.5.0
  - PDO 拓展
@@ -21,7 +21,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
  - CURL 拓展
  - MCRYPT 拓展
  
-## 程序安装
+## 安装
 
 - 下载程序
 
@@ -96,7 +96,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
     4. 安装步骤三：安装完成
     
     
-## Documentation
+## 文档
 
 - [核心类库](https://github.com/gouguoyin/doc/blob/master/gophp/library.md)
 - [系统函数](https://github.com/gouguoyin/doc/blob/master/gophp/function.md)
@@ -104,7 +104,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 - [系统常量](https://github.com/gouguoyin/doc/blob/master/gophp/const.md)
 - [配置参考](https://github.com/gouguoyin/doc/blob/master/gophp/config.md)
 
-## Contaction
+## 联系
 
 - 如果您有任何疑问，或有好的意见和想法，请通过以下途径联系我
 - 官方网站：[frame.gouguoyin.cn](http://frame.gouguoyin.cn)
