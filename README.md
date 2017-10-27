@@ -85,7 +85,7 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于打�
 - 打开浏览器,访问安装向导`http://你的域名/install`
 
     - 安装步骤一：环境检测
-    ![](http://upload-images.jianshu.io/upload_images/259-0ad0d0bfc1c608b6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    ![](http://7jpto7.com1.z0.glb.clouddn.com/step1.png)
     
     - 安装步骤二：数据库配置
     
