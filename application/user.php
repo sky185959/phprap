@@ -80,6 +80,17 @@ class user {
     }
 
     /**
+     * 获取所有会员数
+     * @return mixed
+     */
+    public static function get_user_num()
+    {
+
+        return db('user')->count();
+
+    }
+
+    /**
      * 根据用户id获取创建的项目数量
      * @param $user_id
      */

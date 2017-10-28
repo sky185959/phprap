@@ -13,10 +13,27 @@ class project extends auth {
 
         $search = request::get('search', []);
 
+        $creater_id = request::get('creater_id', 0);
+        $joiner_id  = request::get('joiner_id', 0);
+
         $db = db::instance();
 
         $table_suffix = $db->suffix;
         $table_name   = $table_suffix .'project';
+
+        if($creater_id){
+
+            $where = "user_id = $creater_id";
+
+        }
+
+        if($joiner_id){
+
+            $joiner_ids = $db->table('member')->where('user_id', '=', $joiner_id)->column('project_id');
+
+            $where .= "id in (" . implode(',', $joiner_ids) . ')';
+
+        }
 
         if($title = trim($search['project'])){
 

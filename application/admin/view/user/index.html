@@ -1,4 +1,4 @@
-{{include_file name='public/header' title='成员管理'}}
+{{include_file name='public/header' title='用户管理'}}
 
 </head>
 
@@ -11,7 +11,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">会员管理</h1>
+                <h1 class="page-header">用户管理</h1>
 
                 <div class="search">
                     <div class="well">
@@ -71,8 +71,8 @@
                                     <td >{{$user.name}}</td>
                                     <td >{{$user.email}}</td>
                                     <td >{{\app\user::get_device_list('icon', $device)}}</td>
-                                    <td ><a href="{{url("project/created")}}?user_id={{$user_id}}" data-toggle="tooltip" title="点击查看具体创建项目">{{\app\user::get_create_project_num($user_id)}}</a></td>
-                                    <td ><a href="{{url("project/joined")}}?user_id={{$user_id}}" data-toggle="tooltip" title="点击查看具体参与项目">{{\app\user::get_join_project_num($user_id)}}</a></td>
+                                    <td ><a href="{{url("admin/project/index")}}?creater_id={{$user_id}}" data-toggle="tooltip" title="点击查看具体创建项目">{{\app\user::get_create_project_num($user_id)}}</a></td>
+                                    <td ><a href="{{url("admin/project/index")}}?joiner_id={{$user_id}}" data-toggle="tooltip" title="点击查看具体参与项目">{{\app\user::get_join_project_num($user_id)}}</a></td>
                                     <td >{{$user.address}}</td>
                                     <td >
                                         {{if $user.status}}

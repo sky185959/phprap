@@ -21,13 +21,11 @@ class test {
      */
     public function index(){
 
-        $server = 'localhost';
-        $username = 'username';
-        $password = 'password';
-
-        $conn=mysql_connect($server,$username,$password) or die("error connecting") ; //连接数据库
 
 
+        $str = "{jkl:334}";
+
+        $a = preg_replace('/([a-zA-z]+)(?=:)/g', "$", $str);
 
 
 

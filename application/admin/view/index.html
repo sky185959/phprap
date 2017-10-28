@@ -1,7 +1,7 @@
 {{include_file name='public/header' title='管理中心'}}
 <style>
-    .panel-fa {
-        margin-top: 10px;
+    .huge {
+        font-size: 35px;
     }
 </style>
 </head>
@@ -27,17 +27,19 @@
         </div>
         {{/if}}
         <!-- /.row -->
+
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-user fa-5x panel-fa"></i>
+                        <div class="row text-center">
+                            <div class="col-xs-4">
+                                <i class="fa fa-user fa-4x"></i>
+                                <span>会员</span>
                             </div>
-                            <div class="col-xs-9 text-center">
-                                <div class="huge">{{\app\statistics::get_today_num('user')}}</div>
-                                <div>今日新增会员</div>
+                            <div class="col-xs-8">
+                                <div class="huge">{{\app\statistics::get_all_num('user')}}</div>
+                                <div>今日新增{{\app\statistics::get_today_num('user')}}</div>
                             </div>
                         </div>
                     </div>
@@ -47,13 +49,14 @@
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-green">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-th fa-5x panel-fa"></i>
+                        <div class="row text-center">
+                            <div class="col-xs-4">
+                                <i class="fa fa-th fa-4x"></i>
+                                <span>项目</span>
                             </div>
-                            <div class="col-xs-9 text-center">
-                                <div class="huge">{{\app\statistics::get_today_num('project')}}</div>
-                                <div>今日新增项目</div>
+                            <div class="col-xs-8">
+                                <div class="huge">{{\app\statistics::get_all_num('project')}}</div>
+                                <div>今日新增{{\app\statistics::get_today_num('project')}}</div>
                             </div>
                         </div>
                     </div>
@@ -63,13 +66,14 @@
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-yellow">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-folder-open fa-5x panel-fa"></i>
+                        <div class="row text-center">
+                            <div class="col-xs-4">
+                                <i class="fa fa-folder-open fa-4x"></i>
+                                <span>模块</span>
                             </div>
-                            <div class="col-xs-9 text-center">
-                                <div class="huge">{{\app\statistics::get_today_num('module')}}</div>
-                                <div>今日新增模块</div>
+                            <div class="col-xs-8">
+                                <div class="huge">{{\app\statistics::get_all_num('module')}}</div>
+                                <div>今日新增{{\app\statistics::get_today_num('module')}}</div>
                             </div>
                         </div>
                     </div>
@@ -79,13 +83,14 @@
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-red">
                     <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-files-o fa-5x panel-fa"></i>
+                        <div class="row text-center">
+                            <div class="col-xs-4">
+                                <i class="fa fa-files-o fa-4x"></i>
+                                <span>接口</span>
                             </div>
-                            <div class="col-xs-9 text-center">
-                                <div class="huge">{{\app\statistics::get_today_num('api')}}</div>
-                                <div>今日新增接口</div>
+                            <div class="col-xs-8">
+                                <div class="huge">{{\app\statistics::get_all_num('api')}}</div>
+                                <div>今日新增{{\app\statistics::get_today_num('api')}}</div>
                             </div>
                         </div>
                     </div>

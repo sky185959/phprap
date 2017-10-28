@@ -58,7 +58,7 @@ class user extends auth {
 
         $where = $where ? ' where ' . $where : '';
 
-        $sql   = "select * from $table_name $where";
+        $sql   = "select * from $table_name $where order by id DESC ";
 
         $total = count($db->show(false)->query($sql));
 
