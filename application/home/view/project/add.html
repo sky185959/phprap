@@ -84,10 +84,10 @@
                 </label>
                 <div class="form-group">
                     <label class="radio-inline">
-                        <input type="radio" name="project[allow_search]" {{if $project.allow_search == 1}}checked{{/if}} value="1"> 允许
+                        <input type="radio" name="project[allow_search]" {{if !$project || $project.allow_search == 1}}checked{{/if}} value="1"> 允许
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="project[allow_search]" {{if $project.allow_search == 0}}checked{{/if}} value="0"> 禁止
+                        <input type="radio" name="project[allow_search]" {{if $project && $project.allow_search == 0}}checked{{/if}} value="0"> 禁止
                     </label>
                 </div>
 

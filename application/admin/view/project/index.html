@@ -66,6 +66,7 @@
                                     <td >
                                         <button type="button" class="btn btn-warning btn-xs js_transferProjectBtn" data-id="{{$project_id}}">转让项目</button>
                                         <button type="button" class="btn btn-danger btn-xs js_deleteProjectBtn" data-id="{{$project_id}}">删除项目</button>
+                                        <a class="btn btn-success btn-xs js_viewProjectBtn" target="_blank" href="{{url("project/{{id_encode($project_id)}}")}}">查看项目</a>
                                     </td>
                                 </tr>
                                 {{/foreach}}
@@ -177,6 +178,14 @@
                 iframeItem: '#js_transferProjectIframe', //iframe元素
                 submitBtn: '.js_submit',
             });
+
+            //查看项目
+            $(".js_viewProjectBtn").click(function () {
+
+                window.location.href = $(this).data('url');
+
+            });
+
 
         });
     </script>
