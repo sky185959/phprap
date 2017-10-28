@@ -107,8 +107,6 @@ class db extends auth {
 
         response::download($file);
 
-        response::ajax(['code'=> 200, 'msg'=>'下载成功']);
-
     }
 
     /**
