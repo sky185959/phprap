@@ -160,5 +160,14 @@ class validate
 
     }
 
+    // 验证是否是合法json
+    public static function isJson($string) {
+
+         json_decode($string);
+
+         return (json_last_error() == JSON_ERROR_NONE);
+
+    }
+
 
 }

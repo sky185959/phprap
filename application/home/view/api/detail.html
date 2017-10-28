@@ -226,14 +226,6 @@
 <script type="text/javascript" src="{{STATIC_URL}}/plugins/clipboard/clipboard.min.js"></script>
 <script>
     $(function () {
-        //control+s快速编辑
-        document.onkeydown=function()   {
-            if (event.ctrlKey == true && event.keyCode == 69) {//Ctrl+S
-                event.returnvalue = false;
-                $(".js_editApiBtn").trigger('click');
-            }
-
-        };
 
         //删除接口表单合法性验证
         $("#js_deleteApiForm").validateForm({

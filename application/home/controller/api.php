@@ -4,6 +4,7 @@ namespace app\home\controller;
 
 use gophp\request;
 use gophp\response;
+use gophp\validate;
 
 class api extends auth {
 
@@ -71,13 +72,21 @@ class api extends auth {
             // 检测是否填写返回示例
             if($demo = $api['demo']){
 
-                $data['demo'] = str_replace(array("\r\n", "\r", "\n", ' '), "", $demo);
+                $demo = str_replace(array("\r\n", "\r", "\n", ' '), "", $demo);
+
+                if(!validate::isJson($demo)){
+
+                    response::ajax(['code' => 305, 'msg' => '返回示例不是合法json格式']);
+
+                }
+
+                $data['demo'] = $demo;
 
             }
 
             // 接口请求方式
-            $data['method']    = $api['method'];
-            $data['user_id']   = $this->user_id;
+            $data['method']  = $api['method'];
+            $data['user_id'] = $this->user_id;
 
             if(\app\api::get_api_info($api_id)){
                 // 更新操作
