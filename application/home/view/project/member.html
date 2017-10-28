@@ -16,7 +16,7 @@
                 <div class="page-header">
                     <h1>项目成员 </h1>
                     <div class="opt-btn">
-                        {{if \app\user::is_creater({{$project.id}})}}
+                        {{if \app\member::has_rule({{$project.id}}, 'member', 'add')}}
                         <a href="javascript:void(0);" class="btn hidden-xs btn-sm btn-success js_addMemberBtn" data-id="{{$project.id}}-0" data-title='添加成员'><i class="fa fa-fw fa-plus"></i>添加</a>
 
                         {{/if}}
