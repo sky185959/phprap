@@ -193,19 +193,25 @@ PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提�
     
 - 后台
 
+    - 管理主页
+    ![](http://gouguoyin.qiniudn.com/admin_home.png)
+
     - 项目管理
-    ![](http://gouguoyin.qiniudn.com/project_manage.png)
+    ![](http://gouguoyin.qiniudn.com/admin_project.png)
     
     - 用户管理
-    ![](http://gouguoyin.qiniudn.com/user_manage.png)
+    ![](http://gouguoyin.qiniudn.com/admin_user.png)
     ![](http://gouguoyin.qiniudn.com/user_disable.png)
     ![](http://gouguoyin.qiniudn.com/reset_password.png)
     
     - 登录历史
-    ![](http://gouguoyin.qiniudn.com/all_login_history.png)
+    ![](http://gouguoyin.qiniudn.com/admin_login_history.png)
     
+    - 数据备份
+    ![](http://gouguoyin.qiniudn.com/data_bak.png)
+
     - 系统设置
-    ![](http://gouguoyin.qiniudn.com/setting.png)
+    ![](http://gouguoyin.qiniudn.com/admin_setting.png)
     
 ## TODO
 
