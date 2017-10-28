@@ -7,7 +7,7 @@ defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 defined('GOPHP_PATH') or define('GOPHP_PATH',dirname(dirname(__FILE__)));
 
 // 定义框架版本
-defined('GOPHP_VERSION') or define('GOPHP_VERSION', '2.0.1');
+defined('GOPHP_VERSION') or define('GOPHP_VERSION', '1.0.0.0');
 
 // 定义框架类库目录
 defined('GOPHP_LIB') or define('GOPHP_LIB', GOPHP_PATH . DS . 'library');

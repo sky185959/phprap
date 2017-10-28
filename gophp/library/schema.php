@@ -10,6 +10,7 @@ class schema
 
     private $db     = null;
     private $stmt   = null;
+    private $suffix;
     private $config = [];
 
     use call;
@@ -17,11 +18,10 @@ class schema
     private function __construct()
     {
 
-        $this->db = db::instance()->connect();
-        $config   = config::get('db');
-        $driver   = $config['driver'];
+        $db = db::instance();
+        $this->db = $db->connect();
 
-        $this->config = $config[$driver];
+        $this->config = $db->config;
 
     }
 
@@ -147,11 +147,11 @@ EOT;
 
         if($table){
 
-            $sql .= "AND c.table_name = '$table_name'";
+            $sql .= " AND c.table_name = '$table_name'";
 
         }
 
-        $sql .= 'ORDER BY c.table_name, c.ordinal_position';
+        $sql .= ' ORDER BY c.table_name, c.ordinal_position';
 
         $this->stmt = $this->query($sql);
 
@@ -163,12 +163,12 @@ EOT;
             $data[$table_name][] = $field;
         }
 
-        return $data;
+        return $table ? $data[$table_name] : $data;
 
     }
 
     // 获取单个字段信息
-    protected function getField($table, $field)
+    public function getField($table, $field)
     {
 
         $sql = 'SHOW FULL FIELDS FROM ' . $table;
@@ -194,242 +194,8 @@ EOT;
 
     }
 
-    // 添加字段
-    protected function addField($table, $data)
-    {
-
-        $field   = $data['field'];
-        $type    = $data['type'];
-        $length  = $data['length'];
-        $isNull  = $data['is_null'];
-        $default = $data['default'];
-        $comment = $data['comment'];
-        $after   = $data['after'];
-
-        $sql = "ALTER TABLE `$table` add `$field` ";
-
-        switch ($type) {
-
-            case 'varchar':
-
-                $length  = $length ? $length : 255;
-
-                break;
-
-            case 'int':
-
-                $length  = $length ? $length : 10;
-                $default = $default ? $default : 0;
-
-                break;
-
-            case 'tinyint':
-
-                $length = $length ? $length : 3;
-                $default = $default ? $default : 0;
-
-                break;
-
-            case 'text':
-
-                $length = '';
-
-                break;
-
-            case 'tinytext':
-
-                $length = '';
-
-                break;
-
-            case 'decimal':
-
-                $length = $length ? $length : '10,2';
-
-                break;
-
-            case 'time':
-
-                $length = '';
-
-                break;
-
-            case 'timestamp':
-
-                $length  = '';
-                $default = 'CURRENT_TIMESTAMP';
-
-                break;
-
-            default:
-
-                $length = '';
-                $default = $default ? $default : '';
-
-                break;
-
-        }
-
-        $length = $length ? '('. $length .')' : '';
-        $isNull = $isNull ? true : false;
-
-        $sql    = $sql . $type . $length;
-
-        if(!$isNull){
-
-            $sql = $sql . ' NOT NULL';
-
-        }
-
-        if(isset($default)){
-
-            $sql = $sql . ' DEFAULT ' . $default;
-
-        }
-
-        if(isset($comment)){
-
-            $sql = $sql . ' COMMENT ' . "'$comment'";
-
-        }
-
-        if(isset($after)){
-
-            $sql = $sql . 'AFTER ' . $after;
-
-        }
-
-        $this->stmt = $this->query($sql);
-
-        if($this->stmt->rowCount() !== false){
-
-            return true;
-
-        }
-
-        return false;
-
-    }
-
-    // 修改字段
-    protected function editField($table, $data)
-    {
-
-        $field   = $data['field'];
-        $type    = $data['type'];
-        $length  = $data['length'];
-        $isNull  = $data['is_null'];
-        $default = $data['default'];
-        $comment = $data['comment'];
-        $after   = $data['after'];
-
-        $sql = "ALTER TABLE `$table` CHANGE COLUMN `$field` `$field` ";
-
-        switch (strtolower($type)) {
-
-            case 'varchar':
-
-                $length  = $length ? $length : 255;
-
-                break;
-
-            case 'int':
-
-                $length  = $length ? $length : 10;
-                $default = $default ? $default : 0;
-
-                break;
-
-            case 'tinyint':
-
-                $length = $length ? $length : 3;
-                $default = $default ? $default : 0;
-
-                break;
-
-            case 'text':
-
-                $length = '';
-
-                break;
-
-            case 'tinytext':
-
-                $length = '';
-
-                break;
-
-            case 'decimal':
-
-                $length = $length ? $length : '10,2';
-
-                break;
-
-            case 'time':
-
-                $length = '';
-
-                break;
-
-            case 'timestamp':
-
-                $length  = '';
-                $default = 'CURRENT_TIMESTAMP';
-
-                break;
-
-            default:
-
-                $length = '';
-                $default = $default ? $default : '';
-
-                break;
-
-        }
-
-        $length = $length ? '('. $length .')' : '';
-        $isNull = $isNull ? true : false;
-
-        $sql    = $sql . $type . $length;
-
-        if(!$isNull){
-
-            $sql = $sql . ' NOT NULL';
-
-        }
-
-        if(isset($default)){
-
-            $sql = $sql . ' DEFAULT ' . $default;
-
-        }
-
-        if(isset($comment)){
-
-            $sql = $sql . ' COMMENT ' . "'$comment'";
-
-        }
-
-        if(isset($after)){
-
-            $sql = $sql . ' AFTER ' . $after;
-
-        }
-
-        $this->stmt = $this->query($sql);
-
-        if($this->stmt->rowCount() !== false){
-
-            return true;
-
-        }
-
-        return false;
-
-    }
-
     // 删除字段
-    protected function dropField($table, $field){
+    public function dropField($table, $field){
 
         $sql  = "ALTER TABLE `$table` DROP `$field`";
 
@@ -445,8 +211,20 @@ EOT;
 
     }
 
+    // 获取创建表sql语句
+    public function getCreateTableSql($table)
+    {
+
+        $stmt = $this->query("SHOW CREATE TABLE $table");
+
+        $creat_table =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $creat_table[0]['Create Table'];
+
+    }
+
     // 执行原生sql
-    private function query($sql)
+    public function query($sql)
     {
 
         try {

@@ -111,6 +111,14 @@ class mysql extends contract
 
         try{
 
+            if (strstr($sql, 'show') || strstr($sql, 'SHOW')) {
+
+                $this->stmt = $this->db->query($sql);
+
+                return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            }
+
             if (strstr($sql, 'CREATE') || strstr($sql, 'DROP')) {
 
                 $this->stmt = $this->db->query($sql);
@@ -164,6 +172,8 @@ class mysql extends contract
                 return $this->stmt->rowCount();
 
             }
+
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         }catch(\PDOException $e) {

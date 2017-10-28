@@ -10,6 +10,7 @@ use app\tree;
 use gophp\backup;
 use gophp\config;
 use gophp\db;
+use gophp\helper\file;
 use gophp\helper\url;
 use gophp\schema;
 
@@ -21,15 +22,13 @@ class test {
      */
     public function index(){
 
+        $a = RUNTIME_PATH.'/data/20171028223004_all.sql';
+
+        $b = file::getInfo($a,'size')/1024;
 
 
-        $str = "{jkl:334}";
+        dump($b);
 
-        $a = preg_replace('/([a-zA-z]+)(?=:)/g', "$", $str);
-
-
-
-        dump($a);
 
 
     }
