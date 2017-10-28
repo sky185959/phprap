@@ -39,6 +39,38 @@ class project {
     }
 
     /**
+     * 根据项目id获取项目模块数
+     * @param $user_id
+     */
+    public static function get_module_num($project_id)
+    {
+
+        if(!$project_id){
+
+            return 0;
+
+        }
+
+        return db('module')->show(false)->where('project_id', '=', $project_id)->count();
+
+    }
+
+    /**
+     * 根据项目id获取项目接口数
+     * @param $user_id
+     */
+    public static function get_api_num($project_id)
+    {
+
+        $project_id = $project_id ? $project_id : 0;
+
+        $module_ids = db('module')->where('project_id', '=', $project_id)->column('id');
+
+        return db('api')->show(false)->where('module_id', 'in', $module_ids)->count();
+
+    }
+
+    /**
      * 检测项目标题是否重复
      * @param $title
      * @param $project_id

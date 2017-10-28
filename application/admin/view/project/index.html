@@ -44,11 +44,11 @@
                                 <thead>
                                 <tr>
                                     <th>项目名称</th>
-                                    <th>项目简介</th>
                                     <th>创建人/创建人账号</th>
-                                    <th>项目成员</th>
+                                    <th>成员数</th>
+                                    <th>模块数</th>
+                                    <th>接口数</th>
                                     <th>创建时间</th>
-
                                     <th>操作面板</th>
                                 </tr>
                                 </thead>
@@ -59,14 +59,15 @@
                                 {{$user_id = $project.user_id}}
                                 <tr>
                                     <td ><a href="{{url("project/$project_id")}}" title="{{$project.title}}">{{$project.title|truncate:12}}</a></td>
-                                    <td >{{$project.intro|truncate:30}}</td>
-                                    <td >{{_uri('user', $user_id, 'name')}}/{{_uri('user', $user_id, 'email')}}</td>
+                                    <td >{{_uri('user', $user_id, 'name')}}<br/>{{_uri('user', $user_id, 'email')}}</td>
                                     <td ><a href="{{url("admin/user")}}?project_id={{$project_id}}">{{\app\project::get_member_num($project_id)}}</a></td>
+                                    <td >{{\app\project::get_module_num($project_id)}}</td>
+                                    <td >{{\app\project::get_api_num($project_id)}}</td>
                                     <td >{{$project.add_time}}</td>
-                                    <td >
-                                        <button type="button" class="btn btn-warning btn-xs js_transferProjectBtn" data-id="{{$project_id}}">转让项目</button>
-                                        <button type="button" class="btn btn-danger btn-xs js_deleteProjectBtn" data-id="{{$project_id}}">删除项目</button>
-                                        <a class="btn btn-success btn-xs js_viewProjectBtn" target="_blank" href="{{url("project/{{id_encode($project_id)}}")}}">查看项目</a>
+                                    <td style="width: 15%">
+                                        <button type="button" class="btn btn-warning btn-xs js_transferProjectBtn" data-id="{{$project_id}}">转让</button>
+                                        <button type="button" class="btn btn-danger btn-xs js_deleteProjectBtn" data-id="{{$project_id}}">删除</button>
+                                        <a class="btn btn-success btn-xs js_viewProjectBtn" target="_blank" href="{{url("project/{{id_encode($project_id)}}")}}">查看</a>
                                     </td>
                                 </tr>
                                 {{/foreach}}
@@ -178,14 +179,6 @@
                 iframeItem: '#js_transferProjectIframe', //iframe元素
                 submitBtn: '.js_submit',
             });
-
-            //查看项目
-            $(".js_viewProjectBtn").click(function () {
-
-                window.location.href = $(this).data('url');
-
-            });
-
 
         });
     </script>

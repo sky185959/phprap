@@ -650,7 +650,9 @@ class mysql extends contract
 
         }elseif(strtoupper($condition) == 'IN' || strtoupper($condition) == 'NOT IN'){
 
+            $value || $value = '(0)';
             is_array($value) and $value = '('. implode(',', $value). ')';
+
 
         }elseif(strtoupper($condition) == 'BETWEEN' || strtoupper($condition) == 'NOT BETWEEN'){
 

@@ -22,12 +22,16 @@ class test {
      */
     public function index(){
 
-        $a = RUNTIME_PATH.'/data/20171028223004_all.sql';
+        $project_id = 3;
 
-        $b = file::getInfo($a,'size')/1024;
+        $module_ids = db('module')->where('project_id', '=', $project_id)->column('id');
+
+        $module_ids = $module_ids ? $module_ids : 0;
+
+        $a= db('api')->show(false)->where('module_id', 'in', $module_ids)->count();
 
 
-        dump($b);
+        dump($a);
 
 
 
