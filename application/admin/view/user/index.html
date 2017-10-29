@@ -83,7 +83,7 @@
                                     </td>
 
                                     <td >{{$user.add_time}}</td>
-                                    <td >
+                                    <td style="width: 18%;">
                                         {{if $user.status}}
                                         <a type="button" class="btn btn-danger btn-xs js_changeStatusBtn" data-id="{{$user_id}}" data-option="冻结" {{if $user.type == 2}}disabled{{/if}}>冻结用户</a>
                                         {{else}}

@@ -14,7 +14,7 @@ class index  extends auth {
 
         $system = [
             'gophp_version' => GOPHP_VERSION,
-            'php_version'   => PHP_OS,
+            'php_version'   => PHP_VERSION,
             'mysql_version' => schema::instance()->version(),
         ];
 
