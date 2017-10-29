@@ -1,8 +1,6 @@
-[PHPRAP - 打造PHP版RAP接口管理系统！](http://phprap.gouguoyin.cn)
+[PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提高前后端协作开发效率，打造PHP版的RAP](http://phprap.gouguoyin.cn)
 
 ## 特性
-
-PHPRAP，是一个PHP轻量级开源API接口文档管理系统，致力于提高前后端协作开发效率，打造PHP版的RAP。它：
 
  - 部署简单，按照安装步骤操作即可完成安装部署；
  - 操作简单，和阿里RAP高度一致的操作流程，给力的用户体验，让你一分钟上手；
