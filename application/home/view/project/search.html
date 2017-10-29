@@ -72,6 +72,8 @@
                                         <a class="btn btn-info btn-xs disabled">创建者</a>
                                         {{else if \app\user::is_joiner($project_id)}}
                                         <a class="btn btn-warning btn-xs disabled">参与者</a>
+                                        {{else if \app\user::is_appling($project_id)}}
+                                        <a class="btn btn-warning btn-xs disabled">审核中</a>
                                         {{else}}
                                         <a class="btn btn-success btn-xs js_addProjectBtn" data-project_id="{{$project.id}}">加入项目</a>
                                         {{/if}}

@@ -204,6 +204,25 @@ class user {
 
     }
 
+    // 当前登录用户是否正在申请中
+    public static function is_appling($project_id)
+    {
+
+        $project_id = $project_id ? $project_id : 0;
+
+        $apply = \db('apply')->where('project_id', '=', $project_id)->where('status', '=', 0)->find();
+
+        if($apply){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+    }
+
     /**
      * 验证密码是否正确
      * @param $user_id
