@@ -21,30 +21,9 @@ class test {
      * 添加/编辑字段
      */
     public function index(){
-        $a =schema::instance();
 
-        $b = $a->version();
-
-        dump($b);
-
-
-
+        dump(phpinfo());
 
     }
-
-    public function pdo_ping($dbconn){
-        try{
-            $dbconn->getAttribute(\PDO::ATTR_SERVER_INFO);
-        } catch (\PDOException $e) {
-
-            dump($e);
-            if(strpos($e->getMessage(), 'MySQL server has gone away')!==false){
-                return false;
-            }
-        }
-        return true;
-    }
-
-
 
 }
