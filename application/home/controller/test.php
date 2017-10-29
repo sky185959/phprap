@@ -21,17 +21,12 @@ class test {
      * 添加/编辑字段
      */
     public function index(){
+        $a =schema::instance();
 
-        $project_id = 3;
+        $b = $a->version();
 
-        $module_ids = db('module')->where('project_id', '=', $project_id)->column('id');
+        dump($b);
 
-        $module_ids = $module_ids ? $module_ids : 0;
-
-        $a= db('api')->show(false)->where('module_id', 'in', $module_ids)->count();
-
-
-        dump($a);
 
 
 

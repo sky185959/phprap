@@ -36,16 +36,16 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>操作系统</td>
-                                                    <td>{{PHP_OS}}</td>
+                                                    <td>{{$system.php_os}}</td>
                                                     <td>Linux</td>
                                                     <td><i class="fa fa-check"></i></td>
                                                 </tr>
                                                 <tr>
                                                     <td>PHP版本</td>
-                                                    <td>{{PHP_VERSION}}</td>
+                                                    <td>{{$system.php_version}}</td>
                                                     <td>>=5.4.0</td>
                                                     <td>
-                                                        {{if version_compare( PHP_VERSION, '5.4.0', '>=' )}}
+                                                        {{if version_compare( $system.php_version, '5.4.0', '>=' )}}
                                                         <i class="fa fa-check"></i>
                                                         {{else}}
                                                         <i class="fa fa-times"></i>
@@ -55,10 +55,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td>MySQL版本</td>
-                                                    <td>{{mysql_get_server_info()}}</td>
+                                                    <td>{{$system.mysql_version}}</td>
                                                     <td>>=5.1.0</td>
                                                     <td>
-                                                        {{if version_compare( mysql_get_server_info(), '5.1.0', '>=' )}}
+                                                        {{if version_compare( $system.mysql_version, '5.1.0', '>=' )}}
                                                         <i class="fa fa-check"></i>
                                                         {{else}}
                                                         <i class="fa fa-times"></i>

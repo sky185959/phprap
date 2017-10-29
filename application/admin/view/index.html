@@ -35,7 +35,7 @@
                         <div class="row text-center">
                             <div class="col-xs-4">
                                 <i class="fa fa-user fa-4x"></i>
-                                <span>会员</span>
+                                <div>会员</div>
                             </div>
                             <div class="col-xs-8">
                                 <div class="huge">{{\app\statistics::get_all_num('user')}}</div>
@@ -52,7 +52,7 @@
                         <div class="row text-center">
                             <div class="col-xs-4">
                                 <i class="fa fa-th fa-4x"></i>
-                                <span>项目</span>
+                                <div>项目</div>
                             </div>
                             <div class="col-xs-8">
                                 <div class="huge">{{\app\statistics::get_all_num('project')}}</div>
@@ -69,7 +69,7 @@
                         <div class="row text-center">
                             <div class="col-xs-4">
                                 <i class="fa fa-folder-open fa-4x"></i>
-                                <span>模块</span>
+                                <div>模块</div>
                             </div>
                             <div class="col-xs-8">
                                 <div class="huge">{{\app\statistics::get_all_num('module')}}</div>
@@ -86,7 +86,7 @@
                         <div class="row text-center">
                             <div class="col-xs-4">
                                 <i class="fa fa-files-o fa-4x"></i>
-                                <span>接口</span>
+                                <div>接口</div>
                             </div>
                             <div class="col-xs-8">
                                 <div class="huge">{{\app\statistics::get_all_num('api')}}</div>
@@ -145,8 +145,8 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <p>程序版本：V{{$system.version}} [<a href="https://github.com/gouguoyin/phprap" target="_blank">查看最新版本</a>]</p>
-                        <p>服务器环境：{{PHP_OS}}</p>
+                        <p>程序版本：V{{$system.gophp_version}} [<a href="https://github.com/gouguoyin/phprap" target="_blank">查看最新版本</a>]</p>
+                        <p>服务器环境：{{$system.php_version}}+{{$system.mysql_version}}</p>
                         <p>使用技术：PHP+MySQL+Bootstrap+JQuery</p>
                         <p>系统开发：<a target="_blank" href="http://www.gouguoyin.cn/about.html">勾国印</a></p>
                         <p>帮助中心：<a target="_blank" href="https://github.com/gouguoyin/apidoc/blob/master/README.md">help.gouguoyin.cn</a></p>

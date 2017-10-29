@@ -241,4 +241,15 @@ EOT;
 
     }
 
+    public function version()
+    {
+
+        $stmt = $this->query('select VERSION()');
+
+        $versions =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $versions[0]['VERSION()'];
+
+    }
+
 }

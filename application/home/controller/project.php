@@ -287,7 +287,7 @@ class project extends auth {
 
         $where = $where ? ' where ' . $where : '';
 
-        $sql   = "select * from $table_name $where";
+        $sql   = "select * from $table_name $where order by id desc";
 
         $total = count($db->show(false)->query($sql));
 

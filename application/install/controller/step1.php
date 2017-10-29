@@ -4,6 +4,7 @@ namespace app\install\controller;
 
 use gophp\request;
 use gophp\response;
+use gophp\schema;
 
 class step1 extends auth {
 
@@ -37,11 +38,18 @@ class step1 extends auth {
 
             session('step', 1);
 
+            $system = [
+                'php_os' => PHP_OS,
+                'php_version'   => PHP_VERSION,
+                'mysql_version' => schema::instance()->version(),
+            ];
+
             $chmod['runtime'] = get_dir_chmod(ROOT_PATH.'/runtime/');
             $chmod['compile']      = get_dir_chmod(RUNTIME_PATH.'/compile');
             $chmod['config'] = get_dir_chmod(RUNTIME_PATH.'/config/');
             $chmod['log'] = get_dir_chmod(RUNTIME_PATH.'/log/');
 
+            $this->assign('system', $system);
             $this->assign('chmod', $chmod);
             $this->display('step1');
 

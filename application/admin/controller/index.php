@@ -2,6 +2,8 @@
 
 namespace app\admin\controller;
 
+use gophp\schema;
+
 class index  extends auth {
 
     public function index(){
@@ -11,7 +13,9 @@ class index  extends auth {
         $last_login = \app\user::get_last_login();
 
         $system = [
-            'version' => GOPHP_VERSION,
+            'gophp_version' => GOPHP_VERSION,
+            'php_version'   => PHP_OS,
+            'mysql_version' => schema::instance()->version(),
         ];
 
         $this->assign('user', $user);
